@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>剪映自动化 · 实时监控台</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117; color: #e6edf3; font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+  }
+  header {
+    display: flex; align-items: center; gap: 16px; padding: 10px 18px;
+    background: #161b22; border-bottom: 1px solid #30363d; flex-shrink: 0;
+  }
+  header .logo { font-size: 16px; font-weight: 700; color: #58a6ff; }
+  header .win { font-size: 12px; color: #8b949e; flex: 1; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; }
+  .pill { font-size: 11px; padding: 3px 10px; border-radius: 12px; background: #21262d;
+    border: 1px solid #30363d; color: #8b949e; }
+  .pill.live { color: #3fb950; border-color: #238636; }
+  main { display: flex; flex: 1; min-height: 0; }
+  /* ---- 画面区 ---- */
+  #stage { flex: 1; position: relative; display: flex; align-items: center;
+    justify-content: center; background: #010409; min-width: 0; }
+  #stream-wrap { position: relative; max-width: 100%; max-height: 100%; }
+  #stream { max-width: 100%; max-height: calc(100vh - 52px); display: block;
+    cursor: default; }
+  #stream.pick { cursor: crosshair; outline: 2px solid #f0883e; }
+  #banner {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    max-width: 82%; background: rgba(22,27,34,.95); border: 1px solid #f0883e;
+    border-radius: 10px; padding: 12px 18px; display: none; z-index: 10;
+    box-shadow: 0 8px 30px rgba(0,0,0,.5);
+  }
+  #banner.show { display: flex; align-items: center; gap: 14px; }
+  #banner .txt { font-size: 14px; line-height: 1.5; }
+  #confirm-btn {
+    background: #238636; color: #fff; border: none; border-radius: 7px;
+    padding: 8px 22px; font-size: 14px; cursor: pointer; flex-shrink: 0;
+  }
+  #confirm-btn:hover { background: #2ea043; }
+  #pick-tip {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    background: rgba(240,136,62,.15); border: 1px dashed #f0883e; color: #f0883e;
+    padding: 6px 16px; border-radius: 8px; font-size: 12px; display: none; z-index: 10;
+  }
+  #pick-tip.show { display: block; }
+  /* ---- 步骤侧栏 ---- */
+  #sidebar { width: 340px; flex-shrink: 0; background: #0d1117;
+    border-left: 1px solid #30363d; overflow-y: auto; padding: 14px; }
+  #sidebar h3 { font-size: 13px; color: #8b949e; margin-bottom: 12px;
+    letter-spacing: 1px; }
+  .step { display: flex; gap: 10px; padding: 10px; border-radius: 8px; margin-bottom: 8px;
+    background: #161b22; border: 1px solid #21262d; }
+  .step .icon { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .step.ok .icon { background: #238636; color: #fff; }
+  .step.running .icon { background: #1f6feb; color: #fff; animation: pulse 1s infinite; }
+  .step.warn .icon { background: #9e6a03; color: #fff; }
+  .step.fail .icon { background: #da3633; color: #fff; }
+  .step.note .icon { background: #30363d; color: #8b949e; }
+  @keyframes pulse { 50% { opacity: .45; } }
+  .step .body { flex: 1; min-width: 0; }
+  .step .title { font-size: 13px; font-weight: 600; }
+  .step .detail { font-size: 11px; color: #8b949e; margin-top: 3px;
+    word-break: break-all; }
+  .step .time { font-size: 10px; color: #484f58; margin-top: 3px; }
+  .step img { width: 100%; border-radius: 6px; margin-top: 8px; cursor: zoom-in;
+    border: 1px solid #30363d; }
+  /* ---- 大图浮层 ---- */
+  #zoom { position: fixed; inset: 0; background: rgba(1,4,9,.92); display: none;
+    align-items: center; justify-content: center; z-index: 99; cursor: zoom-out; }
+  #zoom.show { display: flex; }
+  #zoom img { max-width: 94%; max-height: 94%; border: 1px solid #30363d; }
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">⏺ 剪映自动化 · 实时监控台</span>
+  <span class="win" id="win-title">连接中…</span>
+  <span class="pill" id="fps-pill">-- fps</span>
+  <span class="pill" id="step-pill">0 步</span>
+  <span class="pill" id="live-pill">离线</span>
+</header>
+<main>
+  <div id="stage">
+    <div id="stream-wrap">
+      <img id="stream" src="/stream" alt="实时画面">
+      <div id="banner"><span class="txt" id="banner-txt"></span>
+        <button id="confirm-btn">确认</button></div>
+      <div id="pick-tip">在画面上点击目标位置（例如「导出」按钮），坐标将回传给自动化</div>
+    </div>
+  </div>
+  <div id="sidebar"><h3>操作步骤</h3><div id="steps"></div></div>
+</main>
+<div id="zoom"><img id="zoom-img"></div>
+<script>
+const $ = id => document.getElementById(id);
+const stream = $('stream');
+let awaitingClick = false;
+let lastSeq = -1, stuckCount = 0;
+
+// 状态轮询
+async function poll() {
+  try {
+    const s = await (await fetch('/api/state', {cache:'no-store'})).json();
+    $('win-title').textContent = s.window ? `窗口: ${s.window.title} (${s.window.width}×${s.window.height})` : '无窗口';
+    $('fps-pill').textContent = s.fps + ' fps';
+    $('step-pill').textContent = s.steps.length + ' 步';
+    // 活跃度：frame_seq 是否增长
+    if (s.frame_seq !== lastSeq) { lastSeq = s.frame_seq; stuckCount = 0; }
+    else stuckCount++;
+    const live = $('live-pill');
+    if (stuckCount < 6) { live.textContent = '● LIVE'; live.className = 'pill live'; }
+    else { live.textContent = '○ 画面停滞'; live.className = 'pill'; }
+    // 横幅
+    const bn = $('banner');
+    if (s.banner && s.banner.text) {
+      $('banner-txt').textContent = s.banner.text;
+      bn.classList.add('show');
+      $('confirm-btn').style.display = s.banner.show_confirm ? 'block' : 'none';
+    } else bn.classList.remove('show');
+    // 取点模式
+    awaitingClick = !!s.awaiting_click;
+    stream.classList.toggle('pick', awaitingClick);
+    $('pick-tip').classList.toggle('show', awaitingClick);
+    renderSteps(s.steps);
+  } catch (e) { /* 服务重载时静默 */ }
+}
+setInterval(poll, 600); poll();
+
+// 步骤渲染
+const ICONS = {ok:'✓', running:'…', warn:'!', fail:'✗', note:'·'};
+function renderSteps(steps) {
+  const box = $('steps');
+  box.innerHTML = '';
+  [...steps].reverse().forEach(st => {
+    const div = document.createElement('div');
+    div.className = 'step ' + st.status;
+    const t0 = new Date(st.t_start * 1000).toLocaleTimeString();
+    const dur = st.t_end ? ((st.t_end - st.t_start).toFixed(1) + 's') : '进行中';
+    div.innerHTML = `<div class="icon">${ICONS[st.status] || '·'}</div>
+      <div class="body">
+        <div class="title">#${st.idx + 1} ${esc(st.title)}</div>
+        ${st.detail ? `<div class="detail">${esc(st.detail)}</div>` : ''}
+        <div class="time">${t0} · ${dur}</div>
+        ${st.snapshot ? `<img src="/api/steps/${st.idx}" data-full="/api/steps/${st.idx}">` : ''}
+      </div>`;
+    box.appendChild(div);
+  });
+  box.querySelectorAll('img').forEach(im =>
+    im.onclick = () => { $('zoom-img').src = im.dataset.full; $('zoom').classList.add('show'); });
+}
+$('zoom').onclick = () => $('zoom').classList.remove('show');
+
+// 确认按钮
+$('confirm-btn').onclick = async () => {
+  await fetch('/api/confirm', {method: 'POST'});
+  $('banner').classList.remove('show');
+};
+
+// 取点：把点击换算成屏幕坐标回传
+stream.addEventListener('click', async ev => {
+  if (!awaitingClick) return;
+  const r = stream.getBoundingClientRect();
+  const nx = stream.naturalWidth, ny = stream.naturalHeight;
+  if (!nx || !ny) return;
+  const s = await (await fetch('/api/state', {cache:'no-store'})).json();
+  const win = s.window; if (!win) return;
+  const px = (ev.clientX - r.left) * (nx / r.width);
+  const py = (ev.clientY - r.top) * (ny / r.height);
+  const x = Math.round(win.left + px), y = Math.round(win.top + py);
+  await fetch('/api/click', {method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({x, y})});
+});
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+</script>
+</body>
+</html>

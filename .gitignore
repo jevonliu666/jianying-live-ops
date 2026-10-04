@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
+
+# 运行产物
+__jycache__/
+__jy_norm__/
+live_ops_runs/
+*.log

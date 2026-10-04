@@ -1,0 +1,337 @@
+{
+  "_comment": "常用剪映资源元数据精选（源自 Apache-2.0 授权的 pyJianYingDraft metadata，仅含免费资源）",
+  "transitions": {
+    "叠化": {
+      "resource_id": "6724845717472416269",
+      "effect_id": "322577",
+      "md5": "2d641adc4bb63e37e3a0067d8c8cc3c3",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "闪黑": {
+      "resource_id": "6724239388189921806",
+      "effect_id": "321493",
+      "md5": "3bca53e9f3dfa2c184fbee96438ea097",
+      "duration_us": 500000,
+      "is_overlap": false
+    },
+    "闪白": {
+      "resource_id": "6724845376098013708",
+      "effect_id": "322575",
+      "md5": "9732e719b858a6dbb648d4fb459fde08",
+      "duration_us": 500000,
+      "is_overlap": false
+    },
+    "泛光": {
+      "resource_id": "6914112263645303303",
+      "effect_id": "4202527",
+      "md5": "c978e2e22e9a9768813f5fd8d486b792",
+      "duration_us": 1000000,
+      "is_overlap": true
+    },
+    "模糊": {
+      "resource_id": "6911569618171597320",
+      "effect_id": "4212596",
+      "md5": "fc1352435f88c6f284b6c6dce8552ffe",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "雾化": {
+      "resource_id": "7216171159589491259",
+      "effect_id": "11387229",
+      "md5": "945e1560e2c65277b4bd4127cd479746",
+      "duration_us": 1200000,
+      "is_overlap": true
+    },
+    "推近": {
+      "resource_id": "6724226861666144779",
+      "effect_id": "359359",
+      "md5": "4d5a316f2eae582e7d0604b47feb8c32",
+      "duration_us": 1000000,
+      "is_overlap": false
+    },
+    "拉远": {
+      "resource_id": "6724226338418332167",
+      "effect_id": "359365",
+      "md5": "9661d5321722495c0a98959a0d617b0f",
+      "duration_us": 1000000,
+      "is_overlap": false
+    },
+    "上移": {
+      "resource_id": "6724846395116753416",
+      "effect_id": "2917279",
+      "md5": "df9bc16697464de201a4924de49234a2",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "下移": {
+      "resource_id": "6724849276100284942",
+      "effect_id": "2917280",
+      "md5": "9c042543d4846e7c17e8f950ce6f91c2",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "左移": {
+      "resource_id": "6726711499676455435",
+      "effect_id": "2917286",
+      "md5": "9562c0ea301229d43f9dca6f6590f306",
+      "duration_us": 1000000,
+      "is_overlap": true
+    },
+    "右移": {
+      "resource_id": "6726711296063967748",
+      "effect_id": "2917287",
+      "md5": "4cfd965c25e33c7df9b2c1b3b4cbdf31",
+      "duration_us": 1000000,
+      "is_overlap": true
+    },
+    "翻页": {
+      "resource_id": "6747979085894390279",
+      "effect_id": "368701",
+      "md5": "2f157ee5d78c197efc26f8ed37490573",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "上下翻页": {
+      "resource_id": "7397337005387944457",
+      "effect_id": "77055399",
+      "md5": "091f7995a43fc66fd0a95b2a6b88834f",
+      "duration_us": 1000000,
+      "is_overlap": true
+    },
+    "爱心": {
+      "resource_id": "6748289440130535947",
+      "effect_id": "2916677",
+      "md5": "2382e2096918b63a0f8e75f720d7d892",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "云朵": {
+      "resource_id": "6955722927161479694",
+      "effect_id": "2912469",
+      "md5": "283bb4bbe729f19f933cb705024a0983",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "分割": {
+      "resource_id": "6968372308419285540",
+      "effect_id": "4211683",
+      "md5": "ca45695f29bacf2dc29a6eb959e9e968",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "马赛克": {
+      "resource_id": "6724866519022440967",
+      "effect_id": "4212631",
+      "md5": "eed93b26d9cd6296b10d2f5065ee396e",
+      "duration_us": 1000000,
+      "is_overlap": true
+    },
+    "风车": {
+      "resource_id": "6748286529921094157",
+      "effect_id": "369485",
+      "md5": "367b8b51b2eeb63eb2009bf5b356bc2f",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "3D空间": {
+      "resource_id": "7049979667406656014",
+      "effect_id": "1506926",
+      "md5": "aaecc038f6543411f601608fc5539f0b",
+      "duration_us": 1500000,
+      "is_overlap": true
+    },
+    "中心旋转": {
+      "resource_id": "6858191434294497805",
+      "effect_id": "878914",
+      "md5": "b43f5b2e59f966a3b110222773c2942d",
+      "duration_us": 500000,
+      "is_overlap": false
+    },
+    "倒影": {
+      "resource_id": "6748313807031898627",
+      "effect_id": "369691",
+      "md5": "0ee10b771dc0443c41a90bb9fd6b3c25",
+      "duration_us": 500000,
+      "is_overlap": true
+    },
+    "冰雪结晶": {
+      "resource_id": "6919369228701143559",
+      "effect_id": "1017910",
+      "md5": "a0fd9d6eb0cb5596cac4f54d0ba59eaf",
+      "duration_us": 500000,
+      "is_overlap": false
+    },
+    "冲鸭": {
+      "resource_id": "7030714241359286821",
+      "effect_id": "1441672",
+      "md5": "784b284f040f61ae95f4e8e660f3a873",
+      "duration_us": 500000,
+      "is_overlap": false
+    }
+  },
+  "effects": {
+    "变清晰": {
+      "resource_id": "6719658716750156291",
+      "effect_id": "634019",
+      "md5": "5aac9b2c125c7660728e4bf390a6c8ab"
+    },
+    "星火炸开": {
+      "resource_id": "6808838081420988942",
+      "effect_id": "703243",
+      "md5": "bf25e21e5b4a025e984e2eed0a00345d"
+    },
+    "色差故障": {
+      "resource_id": "6706773498922013191",
+      "effect_id": "634773",
+      "md5": "6ee1a1ab0be0849602a3c983a025c47a"
+    },
+    "复古DV": {
+      "resource_id": "6865959646092333576",
+      "effect_id": "898868",
+      "md5": "19e1584168d4d3570a91185b8149ad03"
+    },
+    "胶片框": {
+      "resource_id": "6974600629268255262",
+      "effect_id": "1164161",
+      "md5": "393b58c3e98a33f92ea16ac611919909"
+    },
+    "录制边框": {
+      "resource_id": "6720541178044879367",
+      "effect_id": "635121",
+      "md5": "5a388c880fe2fec47424d62a1e81c2c1"
+    },
+    "蒸汽波": {
+      "resource_id": "6719658860539286020",
+      "effect_id": "634147",
+      "md5": "08d620dca82aea6bf5d71d48ba4a6b3d"
+    },
+    "蹦迪光": {
+      "resource_id": "6716419849544798723",
+      "effect_id": "634733",
+      "md5": "5b3449fa5476bfd93851d0b4cce7b8c9"
+    },
+    "冲刺": {
+      "resource_id": "6790536507905020430",
+      "effect_id": "635003",
+      "md5": "7efa92b9cc009384af9b207474f52b24"
+    },
+    "开幕": {
+      "resource_id": "6706773534074491403",
+      "effect_id": "631211",
+      "md5": "7afa9c82c3d221742bb42a3b01d4fce7"
+    },
+    "闭幕": {
+      "resource_id": "6725685146323784205",
+      "effect_id": "634035",
+      "md5": "6a59cb9db4036a187d4b1ca3a2cab8f3"
+    },
+    "放大镜": {
+      "resource_id": "7051836120224502308",
+      "effect_id": "1520514",
+      "md5": "5f89a973e9cea025690bdb37a293a959"
+    },
+    "聚光灯": {
+      "resource_id": "6750075966053159427",
+      "effect_id": "634081",
+      "md5": "49c61bf16894adb9926b79d18993c3bd"
+    },
+    "模糊": {
+      "resource_id": "6739752823140913675",
+      "effect_id": "634025",
+      "md5": "abb0b0e8472b73a42e796086c708d216"
+    },
+    "心跳": {
+      "resource_id": "6723068356821258764",
+      "effect_id": "634753",
+      "md5": "905af212d43a1e42756b068af6c0c087"
+    },
+    "1998": {
+      "resource_id": "6981791065204331044",
+      "effect_id": "1183068",
+      "md5": "d53096e8139dd33f7a2be6adcd7ce56b"
+    }
+  },
+  "filters": {
+    "港风": {
+      "resource_id": "7127830945243090184",
+      "effect_id": "7127830945243090184",
+      "md5": "44c277e7933012ecceaa669d4bc64452"
+    },
+    "奶杏": {
+      "resource_id": "7297134192100379938",
+      "effect_id": "7297134192100379938",
+      "md5": "89ae84878534d61d0b7d62ba395fc8b7"
+    },
+    "气泡水": {
+      "resource_id": "7127619120761212168",
+      "effect_id": "7127619120761212168",
+      "md5": "4a0b28181b76b9ba2dd4ccdf66aa905a"
+    },
+    "德古拉": {
+      "resource_id": "7127678346472819982",
+      "effect_id": "7127678346472819982",
+      "md5": "f8bfba1ebdb6c5054eec4eb1e9433e72"
+    },
+    "1980": {
+      "resource_id": "7127828208690433311",
+      "effect_id": "7127828208690433311",
+      "md5": "d3595847ee8348c69c6037b8003a76e9"
+    },
+    "ABG": {
+      "resource_id": "7127679308897832206",
+      "effect_id": "7127679308897832206",
+      "md5": "d07b36b0b8e1893ce49df327ba926804"
+    },
+    "Ditto": {
+      "resource_id": "7195816046077496635",
+      "effect_id": "7195816046077496635",
+      "md5": "09d18408ca0dee53716c3a4f41dd35e1"
+    },
+    "KE1": {
+      "resource_id": "7127819154018536741",
+      "effect_id": "7127819154018536741",
+      "md5": "5ece7eff894e25a356b9111e78478c56"
+    },
+    "KV5D": {
+      "resource_id": "7127578859217620254",
+      "effect_id": "7127578859217620254",
+      "md5": "57940599e2c8d85a7f73824c7360bfca"
+    },
+    "Lofi II": {
+      "resource_id": "7232216810031025468",
+      "effect_id": "7232216810031025468",
+      "md5": "7d5f9e106b93bf758725da54daa1843f"
+    },
+    "VHS III": {
+      "resource_id": "7127669764905782542",
+      "effect_id": "7127669764905782542",
+      "md5": "c8d7adad4773fccc2128d8eafa569572"
+    },
+    "三洋VPC": {
+      "resource_id": "7127669338089311495",
+      "effect_id": "7127669338089311495",
+      "md5": "73c77a4b9c5085af6175a523d24bc7c6"
+    },
+    "书意": {
+      "resource_id": "7368493100127292723",
+      "effect_id": "7368493100127292723",
+      "md5": "3e20d8ccc31ca6a495b3f8e2ff116744"
+    },
+    "亢奋": {
+      "resource_id": "7166472327801097476",
+      "effect_id": "7166472327801097476",
+      "md5": "93c16f48d5d45cb663270a82a06f72b8"
+    },
+    "亮夏": {
+      "resource_id": "7505804389395877120",
+      "effect_id": "7505804389395877120",
+      "md5": "839755ea45f49179790ae2d9a00810b3"
+    },
+    "亮肤": {
+      "resource_id": "7127655008715230495",
+      "effect_id": "7127655008715230495",
+      "md5": "2aaa463c5deee34e73384d549edc7c15"
+    }
+  }
+}
